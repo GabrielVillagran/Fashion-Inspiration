@@ -1,9 +1,13 @@
 <?php
 
+use App\Http\Controllers\GarmentImageController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'garments.index')->name('garments.index');
+Route::get('/', [GarmentImageController::class, 'index'])
+    ->name('garments.index');
 
-Route::view('/garments/create', 'garments.create')->name('garments.create');
+Route::get('/garments/create', [GarmentImageController::class, 'create'])
+    ->name('garments.create');
 
-Route::view('/garments/sample', 'garments.show')->name('garments.show');
+Route::get('/garments/{garmentImage}', [GarmentImageController::class, 'show'])
+    ->name('garments.show');
