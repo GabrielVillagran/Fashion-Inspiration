@@ -315,6 +315,7 @@ textarea {
 }
 
 @media (max-width: 900px) {
+
     .library-layout,
     .detail-layout {
         grid-template-columns: 1fr;
@@ -342,5 +343,34 @@ textarea {
 
     .container {
         width: min(100% - 28px, 1180px);
+    }
+
+    .alert {
+        border-radius: 14px;
+        padding: 14px 16px;
+        margin-bottom: 20px;
+        line-height: 1.5;
+    }
+
+    .alert-success {
+        background: #e8f6ee;
+        border: 1px solid #b7e0c5;
+        color: #245c38;
+    }
+
+    .alert-error {
+        background: #fff0f0;
+        border: 1px solid #efb8b8;
+        color: #7c2525;
+    }
+
+    .alert ul {
+        margin-bottom: 0;
+    }
+
+    .field-error {
+        color: #b42318;
+        font-size: 13px;
+        margin: 0;
     }
 }

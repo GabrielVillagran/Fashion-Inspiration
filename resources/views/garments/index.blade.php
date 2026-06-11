@@ -85,8 +85,7 @@
         <div class="image-grid">
             @foreach ($garments as $garment)
             <article class="card garment-card">
-                <a href="{{ route('garments.show', $garment) }}">
-                    @if ($garment->image_path)
+                <a href="{{ route('garments.show', ['garmentImage' => $garment->id]) }}"> @if ($garment->image_path)
                     <img
                         class="garment-image"
                         src="{{ asset('storage/' . $garment->image_path) }}"
