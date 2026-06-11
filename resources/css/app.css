@@ -373,4 +373,46 @@ textarea {
         font-size: 13px;
         margin: 0;
     }
+
+    .annotation-list {
+        display: grid;
+        gap: 14px;
+        margin-top: 18px;
+    }
+
+    .annotation-card {
+        background: var(--surface-soft);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 16px;
+    }
+
+    .annotation-section {
+        margin-bottom: 12px;
+    }
+
+    .annotation-section strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--accent-dark);
+        font-size: 14px;
+    }
+
+    .annotation-section p {
+        margin: 0;
+        color: var(--text);
+        line-height: 1.5;
+    }
+
+    .annotation-meta {
+        color: var(--muted);
+        font-size: 12px;
+        margin: 8px 0 0;
+    }
+
+    .divider {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 24px 0;
+    }
 }

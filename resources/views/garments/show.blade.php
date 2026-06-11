@@ -106,30 +106,102 @@
         <div class="card">
             <h2 class="section-title">Designer Annotations</h2>
 
+            <p class="subtitle">
+                These notes are human-generated and intentionally separated from the AI-generated metadata above.
+            </p>
+
+            @if ($errors->has('annotation'))
+            <div class="alert alert-error">
+                {{ $errors->first('annotation') }}
+            </div>
+            @endif
+
             @if ($garmentImage->annotations->isEmpty())
             <p class="subtitle">
                 No designer annotations yet.
             </p>
             @else
-            @foreach ($garmentImage->annotations as $annotation)
-            <div class="form-grid">
-                <div class="form-group">
-                    <label>Designer Tags</label>
-                    <input type="text" value="{{ $annotation->tags }}" disabled>
-                </div>
+            <div class="annotation-list">
+                @foreach ($garmentImage->annotations as $annotation)
+                <article class="annotation-card">
+                    @if ($annotation->tags)
+                    <div class="annotation-section">
+                        <strong>Designer Tags</strong>
+                        <p>{{ $annotation->tags }}</p>
+                    </div>
+                    @endif
 
-                <div class="form-group">
-                    <label>Designer Notes</label>
-                    <textarea disabled>{{ $annotation->notes }}</textarea>
-                </div>
+                    @if ($annotation->notes)
+                    <div class="annotation-section">
+                        <strong>Designer Notes</strong>
+                        <p>{{ $annotation->notes }}</p>
+                    </div>
+                    @endif
 
-                <div class="form-group">
-                    <label>Observations</label>
-                    <textarea disabled>{{ $annotation->observations }}</textarea>
-                </div>
+                    @if ($annotation->observations)
+                    <div class="annotation-section">
+                        <strong>Observations</strong>
+                        <p>{{ $annotation->observations }}</p>
+                    </div>
+                    @endif
+
+                    <p class="annotation-meta">
+                        Added {{ $annotation->created_at->diffForHumans() }}
+                    </p>
+                </article>
+                @endforeach
             </div>
-            @endforeach
             @endif
+
+            <hr class="divider">
+
+            <h3 class="section-title">Add Designer Annotation</h3>
+
+            <form
+                class="form-grid"
+                method="POST"
+                action="{{ route('garments.annotations.store', ['garmentImage' => $garmentImage->id]) }}">
+                @csrf
+
+                <div class="form-group">
+                    <label for="tags">Designer Tags</label>
+                    <input
+                        id="tags"
+                        name="tags"
+                        type="text"
+                        value="{{ old('tags') }}"
+                        placeholder="Example: artisan, neckline detail, resort">
+                    @error('tags')
+                    <p class="field-error">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Designer Notes</label>
+                    <textarea
+                        id="notes"
+                        name="notes"
+                        placeholder="Add creative notes, product ideas, or styling references...">{{ old('notes') }}</textarea>
+                    @error('notes')
+                    <p class="field-error">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="observations">Observations</label>
+                    <textarea
+                        id="observations"
+                        name="observations"
+                        placeholder="Add fit, silhouette, color, material, trend, or market observations...">{{ old('observations') }}</textarea>
+                    @error('observations')
+                    <p class="field-error">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <button class="button" type="submit">
+                    Save Annotation
+                </button>
+            </form>
         </div>
     </div>
 </section>
