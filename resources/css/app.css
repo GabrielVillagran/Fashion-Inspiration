@@ -415,4 +415,14 @@ textarea {
         border-top: 1px solid var(--border);
         margin: 24px 0;
     }
+
+    .button:disabled,
+    .button.is-loading {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+
+    .button.is-loading {
+        pointer-events: none;
+    }
 }
