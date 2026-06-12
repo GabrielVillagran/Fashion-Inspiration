@@ -2,6 +2,8 @@
 
 A lightweight AI-powered web application that allows the users to upload fashion or streetwear reference images, classify them using a multimodal AI model, store structured metadata, search through the image library, apply dynamic filters, and add human designer annotations over time.
 
+<img width="1883" height="952" alt="image" src="https://github.com/user-attachments/assets/e5499d87-3b52-417e-bed6-eb02de93407d" />
+
 ## Features
 
 * Upload garment or street-fashion inspiration images.
